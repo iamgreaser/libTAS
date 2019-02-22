@@ -876,7 +876,7 @@ void generateMouseButtonEvents(void)
                 dev->event_y = game_ai.pointer_y + ai.pointer_y - old_ai.pointer_y;
                 dev->root_x = dev->event_x;
                 dev->root_y = dev->event_y;
-                dev->detail = bi; // Not sure...
+                dev->detail = bi+1;
                 dev->buttons.mask = static_cast<unsigned char*>(malloc(1*sizeof(unsigned char)));
                 dev->buttons.mask_len = 1;
                 for (int bj=0; bj<5; bj++) {
@@ -909,7 +909,7 @@ void generateMouseButtonEvents(void)
                 }
                 event.xcookie.data = rev;
                 rev->time = timestamp;
-                rev->detail = bi;
+                rev->detail = bi+1;
                 for (int d=0; d<GAMEDISPLAYNUM; d++) {
                     if (gameDisplays[d]) {
                         xlibEventQueue.insert(&event);
